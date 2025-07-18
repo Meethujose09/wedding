@@ -49,7 +49,7 @@ function App() {
             {/* Define Routes */}
             <Routes>
                 <Route
-                    path="/"
+                    path="/superset"
                     element={
                         <>
                             <div ref={homeRef}><Home /></div>
