@@ -1,0 +1,17 @@
+.contactSection {
+  min-height: 100vh;
+  background-image: url('../../assets/hands.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  padding: 40px;
+}

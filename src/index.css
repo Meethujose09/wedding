@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+/* Import inside your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&family=Dancing+Script&family=Cinzel&family=Parisienne&display=swap');
+/* Couple's Names in Great Vibes (fancy script) */
+h1.couple-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    color: #b7410e;
+    letter-spacing: 2px;
+  }
+  
+  /* Headers in Playfair Display */
+  h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #b7410e;
+    font-weight: 700;
+  }
+  
+  /* Paragraphs in Dancing Script (soft cursive) */
+  p.story {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: #3c2f2f;
+  }
+  
+  /* RSVP form labels or small headings in Cinzel */
+  label, small {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    color: #b7410e;
+  }
+  
+  /* Footer in Parisienne */
+  footer {
+    font-family: 'Parisienne', cursive;
+    font-size: 1.1rem;
+    color: white;
+  }
+  @import url("https://fonts.cdnfonts.com/css/rallocate-personal-use");
+
+/* Optional fallback stack */
+:root {
+  --font-rallocate: "Rallocate Personal Use", cursive;
+}

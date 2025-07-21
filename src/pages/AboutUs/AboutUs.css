@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+.aboutUsSection {
+  position: relative;
+  background-image: url("../../assets/our.jpeg");
+  background-size: cover;
+  background-position: center;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: zoomBackground 20s ease-in-out infinite alternate;
+}
+
+@keyframes zoomBackground {
+  0% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: 105%;
+  }
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 1100px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInOverlay 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeInOverlay {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro,
+.moreinfo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.1rem;
+  color: #f9e8d9;
+  text-align: center;
+  line-height: 1.6;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #f2c49b88;
+  margin: 2rem auto;
+  width: 50%;
+}
+
+#brideandgroom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.fadeCard {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #f3f1f5;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.fadeCard:nth-child(1) {
+  animation-delay: 1.2s;
+}
+
+.fadeCard:nth-child(2) {
+  animation-delay: 1.6s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profilePicture {
+  border-radius: 12px;
+  height: 240px;
+  width: 240px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+}
+
+.moreinfo {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .overlay {
+    padding: 1.5rem;
+  }
+
+  .profilePicture {
+    height: 200px;
+    width: 200px;
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .fadeCard {
+    width: 90%;
+  }
+
+  hr {
+    width: 70%;
+  }
+}
