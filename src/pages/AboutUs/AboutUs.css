@@ -2,9 +2,11 @@
 
 .aboutUsSection {
   position: relative;
-  background-image: url("../../assets/our.jpeg");
-  background-size: cover;
-  background-position: center;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.3), rgba(0,0,0, 0.7) 80%),
+    url("../../assets/our.jpeg") no-repeat center center / cover;
+
   padding: 3rem 1rem;
   min-height: 100vh;
   display: flex;
@@ -12,6 +14,7 @@
   justify-content: center;
   animation: zoomBackground 20s ease-in-out infinite alternate;
 }
+
 
 @keyframes zoomBackground {
   0% {

@@ -12,7 +12,16 @@ function App() {
   const aboutRef = useRef(null);
   const locationRef = useRef(null);
   const contactRef = useRef(null);
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();  // Disable right-click anywhere
+    };
+    document.addEventListener("contextmenu", handleContextMenu);
 
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
   useEffect(() => {
     AOS.init({
       duration: 1000,

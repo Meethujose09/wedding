@@ -4,62 +4,71 @@ import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
 import { useEffect, useState } from 'react';
-import mainImage from '../../assets/couple.jpeg';
+import mainImage from '../../assets/couple.jpeg'; // or .webp if optimized
 import { Menu, X } from 'lucide-react';
 
 export default function LandingSlider() {
   const slides = [mainImage];
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showSlider, setShowSlider] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  useEffect(() => {
+    // Delay slider mount slightly to avoid visual jank
+    const timer = setTimeout(() => setShowSlider(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="relative h-screen w-full overflow-hidden">
-  
-      {/* Slider */}
-      <Swiper
-        modules={[Autoplay, EffectFade]}
-        effect="fade"
-        autoplay={{ delay: 7000 }}
-        loop={true}
-        className="h-full w-full"
-      >
-        {slides.map((img, idx) => (
-          <SwiperSlide key={idx}>
-            <div className="relative h-full w-full">
-              <img
-                src={img}
-                alt={`Slide ${idx}`}
-                className="h-full w-full object-cover scale-105"
-              />
-              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-              <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
-                <h1
-                  className="text-[52px] md:text-[80px] lg:text-[100px] text-[#f2c49b] drop-shadow-xl font-[Rallocate] leading-tight tracking-tight antialiased"
-                  style={{ fontFamily: "'Rallocate Personal Use', cursive" }}
-                >
-                  Akhil{' '}
-                  <span className="font-elegist text-[48px] md:text-[64px] align-middle mx-3">
-                    &
-                  </span>{' '}
-                  Meethu
-                </h1>
-                <p className="mt-2 text-lg md:text-xl italic font-elegist tracking-wide">
-                  September 13, 2025 – Kochi, Kerala
-                </p>
-
-                {/* Quote and Countdown */}
-                <div className="mt-6 flex flex-col items-center justify-center text-center">
-                  <p className="text-base md:text-xl italic font-elegist text-[#f2c49b] mb-4 px-4 max-w-md md:max-w-xl">
-                    With every sunrise, closer to forever — counting down to us.
+      {showSlider && (
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          effect="fade"
+          autoplay={{ delay: 7000 }}
+          loop={true}
+          className="h-full w-full"
+        >
+          {slides.map((img, idx) => (
+            <SwiperSlide key={idx}>
+              <div className="relative h-full w-full">
+                <img
+                  src={img}
+                  alt={`Slide ${idx}`}
+                  className="h-full w-full object-cover scale-105"
+                  loading="eager" // force immediate load
+                />
+                {/* Overlay with reduced darkness */}
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+                <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
+                  <h1
+                    className="text-[52px] md:text-[80px] lg:text-[100px] text-[#f2c49b] drop-shadow-xl font-[Rallocate] leading-tight tracking-tight antialiased"
+                    style={{ fontFamily: "'Rallocate Personal Use', cursive" }}
+                  >
+                    Akhil{' '}
+                    <span className="font-elegist text-[48px] md:text-[64px] align-middle mx-3">
+                      &
+                    </span>{' '}
+                    Meethu
+                  </h1>
+                  <p className="mt-2 text-lg md:text-xl italic font-elegist tracking-wide">
+                    September 13, 2025 – Kochi, Kerala
                   </p>
-                  <Countdown targetDate="2025-09-13T00:00:00" />
+
+                  {/* Quote and Countdown */}
+                  <div className="mt-6 flex flex-col items-center justify-center text-center">
+                    <p className="text-base md:text-xl italic font-elegist text-[#f2c49b] mb-4 px-4 max-w-md md:max-w-xl">
+                      With every sunrise, closer to forever — counting down to us.
+                    </p>
+                    <Countdown targetDate="2025-09-13T00:00:00" />
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
     </div>
   );
 }
