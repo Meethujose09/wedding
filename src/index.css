@@ -12,7 +12,13 @@ h1.couple-names {
     color: #b7410e;
     letter-spacing: 2px;
   }
-  
+  body {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
   /* Headers in Playfair Display */
   h2, h3 {
     font-family: 'Playfair Display', serif;
