@@ -1,10 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "wedding website",
+  "name": "Akhil and Meethu",
   "icons": [
    
     {
-      "src": "newlogo.png",
+      "src": "favicon.ico",
       "type": "image/png",
       "sizes": "192x192"
     }

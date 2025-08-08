@@ -29,7 +29,8 @@ const Navbar = ({ onNavigate }) => {
           className="w-4 h-4 mx-2"
           animate={{ scale: [1, 1.1, 1] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
-          style={{marginRight:'2px'}}
+       
+          
         >
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 
