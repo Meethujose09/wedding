@@ -49,7 +49,7 @@ export default function LandingSlider() {
                     Akhil{' '}
                     <span className="font-elegist text-[48px] md:text-[64px] align-middle mx-3">
                       &amp;
-                    </span>{' '}
+                    </span>{''}
                     Meethu
                   </h1>
                   <p className="mt-2 text-lg md:text-xl italic font-elegist tracking-wide">
