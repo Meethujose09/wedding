@@ -48,7 +48,7 @@ export default function LandingSlider() {
                   >
                     Akhil{' '}
                     <span className="font-elegist text-[48px] md:text-[64px] align-middle mx-3">
-                      &
+                      &amp;
                     </span>{' '}
                     Meethu
                   </h1>
@@ -76,6 +76,7 @@ export default function LandingSlider() {
 // Countdown Component
 function Countdown({ targetDate }) {
   const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
+  const [isFinished, setIsFinished] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -85,6 +86,7 @@ function Countdown({ targetDate }) {
       if (diff <= 0) {
         clearInterval(timer);
         setTime({ d: 0, h: 0, m: 0, s: 0 });
+        setIsFinished(true); // Mark countdown finished
         return;
       }
 
@@ -97,6 +99,17 @@ function Countdown({ targetDate }) {
 
     return () => clearInterval(timer);
   }, [targetDate]);
+
+  if (isFinished) {
+    return (
+      <>
+        <h2 className="text-4xl font-bold text-[#f2c49b] drop-shadow-lg mb-4">
+          The Day is Here! 💐
+        </h2>
+        <FlowerConfetti />
+      </>
+    );
+  }
 
   const boxStyle =
     'flex flex-col items-center px-4 py-2 bg-white/10 rounded-lg shadow-md backdrop-blur-sm';
@@ -118,6 +131,58 @@ function Countdown({ targetDate }) {
           <div className={labelStyle}>{t.label}</div>
         </div>
       ))}
+    </div>
+  );
+}
+
+// Flower Confetti Animation Component
+function FlowerConfetti() {
+  return (
+    <div className="confetti-container fixed inset-0 pointer-events-none overflow-hidden z-50">
+      {[...Array(30)].map((_, i) => (
+        <div
+          key={i}
+          className="flower"
+          style={{
+            left: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 5}s`,
+            animationDuration: `${3 + Math.random() * 3}s`,
+            fontSize: `${12 + Math.random() * 18}px`,
+          }}
+        >
+          🌸
+        </div>
+      ))}
+      <style jsx>{`
+        .confetti-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          overflow: hidden;
+        }
+        .flower {
+          position: absolute;
+          top: -2rem;
+          opacity: 0.9;
+          animation-name: fall;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          user-select: none;
+        }
+        @keyframes fall {
+          0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0.9;
+          }
+          100% {
+            transform: translateY(110vh) rotate(360deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
     </div>
   );
 }
