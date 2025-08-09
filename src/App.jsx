@@ -19,6 +19,15 @@ function App() {
   const contactRef = useRef(null);
   const guestnotesRef = useRef(null);
   const galleryRef = useRef(null);
+useEffect(() => {
+  // Disable browser scroll restoration
+  if ("scrollRestoration" in window.history) {
+    window.history.scrollRestoration = "manual";
+  }
+
+  // Always scroll to top on load
+  window.scrollTo({ top: 0, behavior: "instant" });
+}, []);
 
   useEffect(() => {
     const handleContextMenu = (e) => {

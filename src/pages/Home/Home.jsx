@@ -3,7 +3,7 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/autoplay';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import mainImage from '../../assets/couple.jpeg'; // or .webp if optimized
 import { Menu, X } from 'lucide-react';
 
@@ -22,7 +22,6 @@ export default function LandingSlider() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      <WelcomeModalWithAudio />
       {showSlider && (
         <Swiper
           modules={[Autoplay, EffectFade]}
@@ -185,106 +184,5 @@ function FlowerConfetti() {
         }
       `}</style>
     </div>
-  );
-}
-
-// Welcome Modal with Audio (NEW)
-function WelcomeModalWithAudio() {
-  const [showModal, setShowModal] = useState(true);
-  const audioRef = useRef(null);
-  const [played, setPlayed] = useState(false);
-
-  useEffect(() => {
-    const audioEl = audioRef.current;
-
-    // Try autoplay on mount
-    audioEl.play().then(() => {
-      setPlayed(true);
-    }).catch(() => {
-      // Autoplay blocked - wait for user interaction
-    });
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        audioEl.pause();
-      } else if (played) {
-        audioEl.play().catch(() => { });
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [played]);
-
-  // Play audio and close modal on any user interaction while modal is shown
-  const handleUserInteraction = () => {
-    if (showModal) {
-      audioRef.current.play().catch(() => { });
-      setPlayed(true);
-      setShowModal(false);
-    }
-  };
-
-  return (
-   <>
-  {showModal && (
-    <div
-      onClick={handleUserInteraction}
-      onTouchStart={handleUserInteraction}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-md p-6"
-      style={{ WebkitTapHighlightColor: 'transparent' }}
-    >
-      <div
-        className="bg-transparent rounded-2xl max-w-md w-full p-10 text-center font-[Rallocate] select-none border border-[#f2c49b] shadow-lg"
-        style={{
-          backdropFilter: 'blur(10px)',
-          WebkitBackdropFilter: 'blur(10px)',
-        }}
-      >
-        <h1
-          className="text-[32px] sm:text-[40px] md:text-[48px] text-[#f2c49b] font-[Rallocate] drop-shadow-lg mb-4 leading-tight"
-          style={{ fontFamily: "'Rallocate Personal Use', cursive" }}
-        >
-          Welcome To Our Story
-        </h1>
-
-        {/* Centered animated heart */}
-        <div className="flex justify-center mb-6">
-          <Heart />
-        </div>
-
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleUserInteraction();
-          }}
-          className="mt-2 px-10 py-3 uppercase font-elegist tracking-widest text-[#f2c49b] text-xl rounded-xl border border-[#f2c49b] hover:bg-[#f2c49b] hover:text-[#3a2c27] transition-colors duration-300 select-none"
-          style={{ fontFamily: "'Elegist', cursive", fontStyle: 'italic' }}
-        >
-          Click Here
-        </button>
-      </div>
-    </div>
-  )}
-
-  {/* Hidden audio element */}
-  <audio ref={audioRef} src="/music.mp3" preload="auto" />
-</>
-
-  );
-}
-
-function Heart() {
-  return (
-    <span
-      className="inline-block text-[#f2c49b] animate-pulse"
-      style={{ fontSize: '1.5rem', lineHeight: 1 }}
-      aria-hidden="true"
-    >
-      ♥
-    </span>
   );
 }
