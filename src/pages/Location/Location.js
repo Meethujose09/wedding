@@ -2,6 +2,7 @@ import React from "react";
 import "./Location.css";
 import Footer from "../../components/Footer/Footer"; // Add this if it's in the same directory
 import image from '../../assets/lock.jpg';
+
 const Location = () => {
   return (
     <section
@@ -44,6 +45,7 @@ const Location = () => {
             </h3>
             <p className="text-[#e6d7ca] font-elegist leading-relaxed mb-4">
               <span className="font-semibold text-[#f2c49b]">Date:</span> September 10, 2025 <br />
+              <span className="font-semibold text-[#f2c49b]">Time:</span> 12:00 PM <br />
               <span className="font-semibold text-[#f2c49b]">Venue:</span> St. Thomas Forane Church, Anakkara
             </p>
             <div className="w-full h-64 rounded-xl overflow-hidden border border-white/10 shadow-lg">
@@ -56,9 +58,6 @@ const Location = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-
-
-
             </div>
           </div>
 
@@ -75,6 +74,7 @@ const Location = () => {
             </h3>
             <p className="text-[#e6d7ca] font-elegist leading-relaxed mb-4">
               <span className="font-semibold text-[#f2c49b]">Date:</span> September 13, 2025 <br />
+              <span className="font-semibold text-[#f2c49b]">Time:</span> 11:00 AM <br />
               <span className="font-semibold text-[#f2c49b]">Venue:</span> St. Mary's Syro Malabar Church, Mekkad Karakkattukunnu
             </p>
             <div className="w-full h-64 rounded-xl overflow-hidden border border-white/10 shadow-lg">
@@ -87,13 +87,10 @@ const Location = () => {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
-
-
             </div>
           </div>
         </div>
       </div>
-
     </section>
   );
 };
