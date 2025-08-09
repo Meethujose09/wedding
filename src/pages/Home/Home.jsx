@@ -59,7 +59,7 @@ export default function LandingSlider() {
                   {/* Quote and Countdown */}
                   <div className="mt-6 flex flex-col items-center justify-center text-center">
                     <p className="text-base md:text-xl italic font-elegist text-[#f2c49b] mb-4 px-4 max-w-md md:max-w-xl">
-                      With every sunrise, closer to forever — counting down to us.
+                      With every sunrise, closer to forever {' '} <Heart/> {' '} counting down to us.
                     </p>
                     <Countdown targetDate="2025-09-13T00:00:00" />
                   </div>
@@ -184,5 +184,15 @@ function FlowerConfetti() {
         }
       `}</style>
     </div>
+  );
+}function Heart() {
+  return (
+    <span
+      className="inline-block text-[#f2c49b] animate-pulse"
+      style={{ fontSize: '1.5rem', lineHeight: 1 }}
+      aria-hidden="true"
+    >
+      ♥
+    </span>
   );
 }
