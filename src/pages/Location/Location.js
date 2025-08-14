@@ -6,7 +6,7 @@ import image from '../../assets/lock.jpg';
 const Location = () => {
   return (
     <section
-      className="relative locationSection min-h-screen text-white bg-cover bg-center bg-no-repeat py-20 px-6 sm:px-12"
+      className="relative locationSection min-h-screen text-white bg-cover bg-center bg-no-repeat py-20 px-6 sm:px-12 overflow-hidden"
       style={{
         backgroundImage: `url(${image})`
       }}
