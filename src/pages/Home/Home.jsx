@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import mainImage from "../../assets/couple.jpeg";
+import mainImage from "../../assets/couple.jpeg"; // or .webp for better perf
 
 export default function LandingSlider() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  // Preload the image to avoid white flash
   useEffect(() => {
     const img = new Image();
     img.src = mainImage;
@@ -12,7 +13,7 @@ export default function LandingSlider() {
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* Background Image */}
+      {/* Background Image with Fade In */}
       <img
         src={mainImage}
         alt="Couple"
@@ -23,12 +24,12 @@ export default function LandingSlider() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm overflow-hidden" />
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4 max-w-full">
+      <div className="absolute inset-0 flex flex-col justify-center items-center text-white text-center px-4">
         <h1
-          className="text-[52px] md:text-[80px] lg:text-[100px] text-[#f2c49b] drop-shadow-xl font-[Rallocate] leading-tight tracking-tight antialiased max-w-full"
+          className="text-[52px] md:text-[80px] lg:text-[100px] text-[#f2c49b] drop-shadow-xl font-[Rallocate] leading-tight tracking-tight antialiased"
           style={{ fontFamily: "'Rallocate Personal Use', cursive" }}
         >
           Akhil{" "}
@@ -41,6 +42,7 @@ export default function LandingSlider() {
           September 13, 2025 – Kochi, Kerala
         </p>
 
+        {/* Quote + Countdown */}
         <div className="mt-6 flex flex-col items-center justify-center text-center">
           <p className="text-base md:text-xl italic font-elegist text-[#f2c49b] mb-4 px-4 max-w-md md:max-w-xl">
             With every sunrise, closer to forever <Heart /> counting down to us.
@@ -52,6 +54,7 @@ export default function LandingSlider() {
   );
 }
 
+// Countdown Component
 function Countdown({ targetDate }) {
   const [time, setTime] = useState({ d: 0, h: 0, m: 0, s: 0 });
   const [isFinished, setIsFinished] = useState(false);
@@ -95,7 +98,7 @@ function Countdown({ targetDate }) {
     "text-xs uppercase tracking-widest mt-1 text-white font-elegist";
 
   return (
-    <div className="flex space-x-4 mt-4 text-white overflow-x-hidden">
+    <div className="flex space-x-4 mt-4 text-white">
       {[
         { label: "Days", value: time.d },
         { label: "Hours", value: time.h },
@@ -113,6 +116,7 @@ function Countdown({ targetDate }) {
   );
 }
 
+// Flower Confetti
 function FlowerConfetti() {
   return (
     <div className="confetti-container fixed inset-0 pointer-events-none overflow-hidden z-50">
@@ -121,7 +125,7 @@ function FlowerConfetti() {
           key={i}
           className="flower"
           style={{
-            left: `${Math.random() * 92}%`, // reduced from 100%
+            left: `${Math.random() * 100}%`,
             animationDelay: `${Math.random() * 5}s`,
             animationDuration: `${3 + Math.random() * 3}s`,
             fontSize: `${12 + Math.random() * 18}px`,
@@ -164,6 +168,7 @@ function FlowerConfetti() {
   );
 }
 
+// Heart Icon
 function Heart() {
   return (
     <span
